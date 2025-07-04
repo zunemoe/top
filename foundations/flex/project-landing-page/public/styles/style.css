@@ -1,0 +1,214 @@
+:root {
+    --text-color-dark-primary: #1f2937; /* Dark gray */
+    --text-color-light-primary: #f9faf8; /* Off-white */
+    --text-color-light-secondary: #e5e7eb; /* Light gray */
+    --text-color-button: #3882f6; /* Blue */
+    --text-color-button-hover: #1d4ed8; /* Darker blue */    
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Change background color of header, footer and hero */
+/* Container layout flex, column */
+/* Header layout flex, row, set margin auto to push logo to left and nav to right. Wrap to accommodate small screens*/
+/* Hero layout flex, row, set margin auto to push content to left and image to right. Wrap to accommodate small screens */
+/* Features layout flex, row, align center, add gap */
+/* Quote layout flex, column, set margin left auto for author to push to right */
+/* Call to action flex, row, set margin auto to push content to left, button to right. Wrap to accommodate small screens */
+
+.container {
+    background-image: url("../images/gplay.png");
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+header {
+    background-color: var(--text-color-dark-primary);
+    color: var(--text-color-light-primary);
+    display: flex;
+    align-items: center; /* Center items vertically */;
+    padding: 0 100px;
+
+}
+
+h1 {
+    margin: 0;
+}
+
+.logo {
+    margin-right: auto; /* Pushes the logo to the left */
+    font-weight: 700;
+    font-size: 26px;
+}
+
+nav {
+    margin-left: auto; /* Pushes the nav to the right */
+    display: flex;
+    
+}
+
+footer {
+    background-color: var(--text-color-dark-primary);
+    color: var(--text-color-light-primary);
+    align-content: center;
+    text-align: center;
+    padding: 10px 100px;
+}
+
+/* Remove list style . and padding */
+nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    font-size: 18px;
+}
+
+/* Remove <a> underline and text color */
+li > a {
+    text-decoration: none;  
+    color: var(--text-color-light-primary);  
+}
+
+.btn-primary {
+    background-color: var(--text-color-button);
+    color: var(--text-color-light-primary);
+    border: none;
+    padding: 6px 20px;
+    border-radius: 5px;
+}
+
+.hero {
+    background-color: var(--text-color-dark-primary);
+    margin: 0px ; 
+    padding: 50px 100px;   
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero-content h1 {
+    color: var(--text-color-light-primary);
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.hero-content p {
+    color: var(--text-color-light-secondary);
+    font-size: 18px;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 274px;
+    order: 2;
+}
+
+.hero-image-container {
+    flex: 1;
+    min-width: 274px;
+    order: 1;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .hero-text {
+        order: 1;
+    }
+
+    .hero-image-container {
+        order: 2;
+    }
+}
+
+.features {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    padding: 50px 100px;
+    
+}
+
+.feature-items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    max-width: 150px;
+}
+
+.feature img {
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 50px 100px;
+    background-color: var(--text-color-light-secondary);
+}
+
+.quote-content {    
+    font-style: italic;
+    color: var(--text-color-dark-primary)
+}
+
+.quote-author {
+    margin-left: auto;
+    color: var(--text-color-dark-primary);
+    font-weight: 900;
+}
+
+.cta {
+    width: 100%;
+    padding: 50px 0px;
+}
+
+.cta-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--text-color-button);
+    padding: 40px 50px;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: var(--text-color-light-primary);
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: var(--text-color-button);
+    color: var(--text-color-light-primary);
+    border-color: var(--text-color-light-primary);
+    border: 2px solid var(--text-color-light-primary);
+    border-radius: 5px;
+    padding: 6px 20px;
+    border-radius: 5px;
+    margin-left: auto;
+    height: 40px;
+}
+
+
