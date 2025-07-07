@@ -1,3 +1,6 @@
+/* ==========================================================================
+   CSS RESET
+   ========================================================================== */
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -53,11 +56,24 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+/* ==========================================================================
+   CUSTOM PROPERTIES
+   ========================================================================== */
+
 :root {
     --color-green: #596D48;
     --color-light-green: #E5E7EB ;
     --padding-content: 50px;
+    --font-family-display: 'Norse-Bold', serif;
+    --font-family-body: 'Open Sans', sans-serif;
+    --border-radius: 4px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transition: all 0.2s ease;
 }
+
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
 
 @font-face {
     font-family: 'Norse-Bold';
@@ -66,6 +82,10 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal;
     font-display: swap;
 }
+
+/* ==========================================================================
+   LAYOUT COMPONENTS
+   ========================================================================== */
 
 .container {
     margin: 0;
@@ -81,6 +101,17 @@ h1, h2, h3, h4, h5, h6 {
     width: 33%;
     position: relative;
 }
+
+.container-content {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;  
+}
+
+/* ==========================================================================
+   IMAGE & LOGO COMPONENTS
+   ========================================================================== */
 
 .container-image img:first-child {
     width: 100%;
@@ -118,12 +149,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-.container-content {
-    flex: 1;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;  
-}
+/* ==========================================================================
+   CONTENT SECTIONS
+   ========================================================================== */
 
 .container-content-paragraph {
     align-content: center;
@@ -139,6 +167,10 @@ h1, h2, h3, h4, h5, h6 {
 .container-content-buttons {
     padding: 30px var(--padding-content); 
 }
+
+/* ==========================================================================
+   FORM COMPONENTS
+   ========================================================================== */
 
 .container-content-form {
     margin-bottom: 20px;
@@ -163,6 +195,81 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     margin-bottom: 5px;
 }
+
+/* ==========================================================================
+   BASE ELEMENTS
+   ========================================================================== */
+/* Typography */
+h1 {
+    font-family: var(--font-family-display);
+    font-weight: normal;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+p, label, h2, button {
+    font-family: var(--font-family-body);
+}
+
+p {
+    font-weight: 600;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: var(--color-green);
+}
+
+/* Images */
+img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+
+button {
+    background-color: var(--color-green);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: color-mix(in srgb, var(--color-green) 90%, black);
+}
+
+input {
+    border: 1px solid var(--color-light-green);
+    border-radius: var(--border-radius);
+    padding: 4px 12px;
+    outline: none;
+    transition: var(--transition);
+}
+
+input:focus {
+    border-color: steelblue;
+    box-shadow: var(--box-shadow);
+}
+
+input:invalid {
+    border-color: red;
+}
+
 
 @media (max-width: 768px) {
     .form-row {
@@ -202,59 +309,3 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-h1 {
-    font-family: 'Norse-Bold', serif;
-    font-weight: normal;
-}
-
-h2 {
-    margin-bottom: 15px;
-}
-
-img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-green);
-}
-
-button {
-    background-color: var(--color-green);
-    color: white;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-input {
-    border: 1px solid var(--color-light-green);
-    border-radius: 4px;
-    padding: 4px 12px;
-    outline: none;
-}
-
-input:focus {
-    border-color: steelblue;
-    box-shadow: 0 0 4px rgba(84, 89, 94, 0.5);
-}
-
-input:invalid {
-    border-color: red;
-}
-
-p, label, h2, button {
-    font-family: 'Open Sans', sans-serif;
-}
-
-p {
-    font-weight: 600;
-}
