@@ -1,0 +1,1 @@
+// Set up game controller console version using IIFE pattern
