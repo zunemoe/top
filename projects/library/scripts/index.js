@@ -21,6 +21,22 @@ myLibrary = [
         author: "George Orwell",
         pages: 328,
         read: false,
+    },
+    {
+        id: crypto.randomUUID(),
+        dateAdded: new Date(),
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        pages: 310,
+        read: true,
+    },
+    {
+        id: crypto.randomUUID(),
+        dateAdded: new Date(),
+        title: "1984",
+        author: "George Orwell",
+        pages: 328,
+        read: false,
     }
 ];
 
