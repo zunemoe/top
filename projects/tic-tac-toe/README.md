@@ -19,24 +19,24 @@ tic-tac-toe/
 ## Implementation Plan
 
 ### Phase 1: Console Version (Game Logic)
-- [ ] **Player Factory Function** (`player.js`)
-  - [ ] Create player objects with name and marker (X/O)
-  - [ ] Player state management
+- [x] **Player Factory Function** (`player.js`)
+  - [x] Create player objects with name and marker (X/O)
+  - [x] Player state management
 
-- [ ] **Game Board Module** (`board.js`)
-  - [ ] Create 3x3 game board array
-  - [ ] Add markers to board positions
-  - [ ] Check for valid moves
-  - [ ] Reset board functionality
-  - [ ] Display board in console
+- [x] **Game Board Module** (`board.js`)
+  - [x] Create 3x3 game board array
+  - [x] Add markers to board positions
+  - [x] Check for valid moves
+  - [x] Reset board functionality
+  - [x] Display board in console
 
-- [ ] **Game Controller** (`game.js`)
-  - [ ] Initialize game state
-  - [ ] Handle player turns
-  - [ ] Check for win conditions (rows, columns, diagonals)
-  - [ ] Check for tie conditions
-  - [ ] Game flow control (start, restart, end)
-  - [ ] Console-based user input/output
+- [x] **Game Controller** (`game.js`)
+  - [x] Initialize game state
+  - [x] Handle player turns
+  - [x] Check for win conditions (rows, columns, diagonals)
+  - [x] Check for tie conditions
+  - [x] Game flow control (start, restart, end)
+  - [x] Console-based user input/output
 
 ### Phase 2: Web Interface (DOM Manipulation)
 - [ ] **HTML Structure** (`index.html`)
