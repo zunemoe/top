@@ -5,12 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    
     <script defer src="./scripts/game.js"></script>
     <script defer src="./scripts/board.js"></script>
     <script defer src="./scripts/player.js"></script>
+
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
+    <div class="container">
+        <div class="game-container">
+            <div class="scores">
+                <div class="score player-x">
+                    <p class="player-label">Player X</p>
+                    <p class="player-x-score">0</p>
+                </div>
+                <div class="score draw">
+                    <p class="player-label">Draw</p>
+                    <p class="draw-score">0</p>
+                </div>
+                <div class="score player-o">
+                    <p class="player-label">Player O</p>
+                    <p class="player-o-score">0</p>
+                </div>
+            </div>
+            <div class="game-board">
+            </div>
+            <div class="controls">
+                <button class="reset-button hide-button">Reset Game</button>
+                <button class="start-button">Start Game</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

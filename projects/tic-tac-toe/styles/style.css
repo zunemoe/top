@@ -1,0 +1,195 @@
+/* ==========================================================================
+   CSS RESET
+   ========================================================================== */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+:root {
+    --color-purple-300: #C5A0D7;
+    --color-purple-500: #5A1E76;
+    --color-purple-700: #43115B;
+    --color-purple-900: #2B0040;
+    --color-cyan: #48D2FE;
+    --color-blue: #BCDBF9;
+    --color-yellow: #E2BE00;
+    --color-black: #000;
+    --color-white: #FFF;
+    --font-family: 'Fredoka', sans-serif;
+    --font-size-l: 94px;
+    --font-size-m: 42px;
+    --font-size-s: 32px;
+    --font-size-xs: 16px;
+    --border-radius-l: 16px;
+    --border-radius-s: 8px;
+    --spacing-l: 32px;
+    --spacing-m: 16px;
+    --spacing-s: 8px;
+    --score-size: 90px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    min-width: 100dvw;
+    background-color: var(--color-purple-500);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background-color: var(--color-purple-900);
+    border-radius: var(--border-radius-l);
+    gap: var(--spacing-m);
+}
+
+.scores {
+    display: flex;
+    gap: var(--spacing-m);
+    width: 100%;
+}
+
+.player-label {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    color: var(--color-black);
+}
+
+.player-x-score, .draw-score, .player-o-score {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    color: var(--color-black);
+}
+
+p {
+    display: block;
+    text-align: center;
+}
+
+.controls {
+    min-width: 100%;
+}
+
+button {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    padding: var(--spacing-m);
+    border-radius: var(--border-radius-s);
+    border: none;
+}
+
+.hide-button {
+    display: none;
+}
+
+.player-x {
+    background-color: var(--color-cyan);
+    border-radius: var(--border-radius-s);
+    width: var(--score-size);
+    height: var(--score-size);
+}
+
+.draw {
+    background-color: var(--color-blue);
+    border-radius: var(--border-radius-s);
+    width: var(--score-size);
+    height: var(--score-size);
+}
+
+.player-o {
+    background-color: var(--color-yellow);
+    border-radius: var(--border-radius-s);
+    width: var(--score-size);
+    height: var(--score-size);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--spacing-m);
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+    flex-grow: 1;
+    
+}
+
+.cell {
+    border-radius: var(--border-radius-s);
+    background-color: var(--color-purple-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-m);
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.player-x-cell {
+    color: var(--color-cyan) !important;
+}
+
+.player-o-cell {
+    color: var(--color-yellow) !important;
+}

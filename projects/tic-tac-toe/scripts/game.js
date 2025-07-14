@@ -3,7 +3,7 @@ const GameController = (function() {
     let player1, player2;
     let currentPlayer;
     let gameActive = false;
-    let gameMode = 'console';
+    let gameMode = 'console'; // console or web
 
     const initGame = () => {
         player1 = createPlayer('Player 1', 'X');
@@ -63,7 +63,7 @@ const GameController = (function() {
         }
 
         Board.setMarker(index, currentPlayer.getMarker());
-        Board.displayBoard();
+        // Board.displayBoard();
 
         if (checkGameEnd()) {
             return true;
@@ -98,8 +98,14 @@ const GameController = (function() {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
+// Add event listener for start button to start the game
+document.querySelector('.start-button').addEventListener('click', () => {
+    console.log('Starting game...');
     GameController.startGame();
-    // Use GameController.makeMove(0) to make moves (0-8 for positions)
-    // Use GameController.restartGame() to restart
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     GameController.startGame();
+//     // Use GameController.makeMove(0) to make moves (0-8 for positions)
+//     // Use GameController.restartGame() to restart
+// });
