@@ -39,7 +39,7 @@ tic-tac-toe/
   - [x] Console-based user input/output
 
 ### Phase 2: Web Interface (DOM Manipulation)
-- [x] **HTML Structure** (`index.html`)
+- [ ] **HTML Structure** (`index.html`)
   - [x] Create game board grid
   - [x] Add player info display
   - [x] Add game controls (start, restart buttons)
