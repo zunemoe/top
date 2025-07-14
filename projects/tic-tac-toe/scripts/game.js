@@ -3,7 +3,11 @@ const GameController = (function() {
     let player1, player2;
     let currentPlayer;
     let gameActive = false;
-    let gameMode = 'console'; // console or web
+    let scores = {
+        playerX: 0,
+        playerO: 0,
+        draw: 0
+    }
 
     const initGame = () => {
         player1 = createPlayer('Player 1', 'X');
@@ -12,9 +16,27 @@ const GameController = (function() {
         gameActive = true;
 
         Board.resetBoard();
+        updateScoreDisplay();
         console.log('Game initialized!');
         console.log(`${player1.getName()} (${player1.getMarker}) vs ${player2.getName()} (${player2.getMarker})`);
         Board.displayBoard();
+    };
+
+    const updateScore = (result) => {
+        if (result === 'X') {
+            scores.playerX++;
+        } else if (result === 'O') {
+            scores.playerO++;
+        } else {
+            scores.draw++;
+        }
+        updateScoreDisplay();
+    };
+
+    const updateScoreDisplay = () => {
+        document.querySelector('.player-x-score').textContent = scores.playerX;
+        document.querySelector('.player-o-score').textContent = scores.playerO;
+        document.querySelector('.draw-score').textContent = scores.draw;
     };
 
     const switchPlayer = () => {
@@ -33,7 +55,7 @@ const GameController = (function() {
         for (let pattern of winPatterns) {
             const [a, b, c] = pattern;
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                return board[a];
+                return { marker: board[a], pattern: pattern };
             }
         }
         return null;
@@ -42,12 +64,57 @@ const GameController = (function() {
     const checkGameEnd = () => {
         const winner = checkWinner();
         if (winner) {
-            const winnerName = winner === player1.getMarker() ? player1.getName() : player2.getName();
-            console.log(`Congratulations! ${winnerName} wins!`);
+            const winnerName = winner.marker === player1.getMarker() ? player1.getName() : player2.getName();
+            
+            updateScore(winner.marker);
+
+            const winnerColor = winner.marker === 'X' ? '#48D2FE' : '#E2BE00';
+            winner.pattern.forEach(index => {
+                const cell = Board.getBoardElement().children[index];                
+                if (cell) {
+                    cell.classList.add('winning-cell');
+                    cell.setAttribute('style', `border-color: ${winnerColor} !important;`);                    
+                }
+            });
+
+            setTimeout(() => {
+                showWinnerModal(winnerName);
+            }, 500);
+
             gameActive = false;
             return true;
         }
+
+        if (Board.getBoard().every(cell => cell !== null)) {
+            updateScore('draw');
+            setTimeout(() => {
+                showWinnerModal('Draw');
+            }, 500);
+            gameActive = false;
+            return true;
+        }
+
         return false;
+    };
+
+    const showWinnerModal = (winnerName) => {
+        const modal = document.getElementById('winner-modal');
+        const message = document.getElementById('winner-message');
+        if (winnerName === 'Draw') {
+            message.textContent = '🎉 It\'s a Draw! 🎉';
+        } else {
+            message.textContent = `🎉 ${winnerName} Wins! 🎉`;
+        }
+        modal.classList.remove('hidden');
+    };
+
+    const resetScores = () => {
+        scores = {
+            playerX: 0,
+            playerO: 0,
+            draw: 0
+        };
+        updateScoreDisplay();
     };
 
     const makeMove = (position) => {
@@ -65,7 +132,14 @@ const GameController = (function() {
         Board.setMarker(index, currentPlayer.getMarker());
         // Board.displayBoard();
 
+        const cell = document.querySelector(`.cell[data-index="${index}"]`);
+        if (cell) {
+            cell.classList.add('filled');
+        }
+
         if (checkGameEnd()) {
+            Board.getResetButton().classList.add('hide-button');
+            Board.getStartButton().classList.remove('hide-button');
             return true;
         }
 
@@ -86,6 +160,11 @@ const GameController = (function() {
         console.log('Game started! Players can make moves by entering positions (0-8).');
     };
 
+    const toggleButtons = () => {
+        Board.getStartButton().classList.add('hide-button');
+        Board.getResetButton().classList.remove('hide-button');
+    }
+
     return {
         initGame,
         makeMove,
@@ -94,18 +173,31 @@ const GameController = (function() {
         restartGame,
         startGame,
         checkWinner,
-        switchPlayer
+        switchPlayer,
+        toggleButtons,
+        resetScores,
+        updateScoreDisplay
     };
 })();
 
-// Add event listener for start button to start the game
-document.querySelector('.start-button').addEventListener('click', () => {
-    console.log('Starting game...');
-    GameController.startGame();
+document.querySelector('.reset-button').addEventListener('click', () => {
+    GameController.restartGame();
+    GameController.resetScores();
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     GameController.startGame();
-//     // Use GameController.makeMove(0) to make moves (0-8 for positions)
-//     // Use GameController.restartGame() to restart
-// });
+document.querySelector('.start-button').addEventListener('click', () => {
+    GameController.startGame();
+    GameController.toggleButtons();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    GameController.startGame();
+
+    document.getElementById('play-again-btn').addEventListener('click', () => {
+        document.getElementById('winner-modal').classList.add('hidden');
+        GameController.restartGame();
+        GameController.toggleButtons();
+    });
+    // Use GameController.makeMove(0) to make moves (0-8 for positions)
+    // Use GameController.restartGame() to restart
+});

@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
     --font-family: 'Fredoka', sans-serif;
     --font-size-l: 94px;
     --font-size-m: 42px;
-    --font-size-s: 32px;
+    --font-size-s: 20px;
     --font-size-xs: 16px;
     --border-radius-l: 16px;
     --border-radius-s: 8px;
@@ -87,6 +87,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100dvh;
     min-width: 100dvw;
     background-color: var(--color-purple-500);
+    font-family: var(--font-family);
 }
 
 .game-container {
@@ -106,15 +107,20 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-.player-label {
-    font-family: var(--font-family);
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-label {    
     font-size: var(--font-size-xs);
     color: var(--color-black);
 }
 
-.player-x-score, .draw-score, .player-o-score {
-    font-family: var(--font-family);
-    font-size: var(--font-size-xs);
+.player-x-score, .draw-score, .player-o-score {    
+    font-size: var(--font-size-s);
     color: var(--color-black);
 }
 
@@ -125,19 +131,31 @@ p {
 
 .controls {
     min-width: 100%;
+    position: relative;
+    min-height: 56px;
 }
 
-button {
+.start-button, .reset-button {
     display: block;
     max-width: 100%;
     width: 100%;
     padding: var(--spacing-m);
     border-radius: var(--border-radius-s);
     border: none;
+    font-size: var(--font-size-s);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+    background-color: var(--color-blue);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .hide-button {
-    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
 }
 
 .player-x {
@@ -170,7 +188,6 @@ button {
     width: 100%;
     aspect-ratio: 1;
     flex-grow: 1;
-    
 }
 
 .cell {
@@ -180,10 +197,34 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-family: var(--font-family);
     font-size: var(--font-size-m);
     font-weight: bold;
     color: var(--color-white);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: var(--color-purple-500);
+    transform: scale(1.05);
+}
+
+.cell.filled {
+    animation: placeMarker 0.3s ease;
+}
+
+@keyframes placeMarker {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .player-x-cell {
@@ -192,4 +233,83 @@ button {
 
 .player-o-cell {
     color: var(--color-yellow) !important;
+}
+
+.winning-cell {
+    animation: winnerGlow 1s ease-in-out infinite alternate !important;
+    /* background-color: #ffeb3b !important; */    
+    --winner-color: var(--color-yellow);
+    border: 8px solid var(--winner-color) !important;
+}
+
+@keyframes winnerGlow {
+    0% {
+        border-color: var(--winner-color);
+
+    }
+    100% {
+        border-color: var(--winner-color);
+
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: var(--color-purple-900);
+    padding: var(--spacing-l);
+    border-radius: var(--border-radius-l);
+    text-align: center;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: var(--color-white);
+    font-size: var(--font-size-m);
+    margin-bottom: var(--spacing-m);
+}
+
+.play-again-button {
+    max-width: 100%;
+    width: 100%;
+    background-color: var(--color-blue);
+    color: var(--color-black);
+    padding: var(--spacing-m);
+    border: none;
+    border-radius: var(--border-radius-s);
+    font-size: var(--font-size-s);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-cyan);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
 }

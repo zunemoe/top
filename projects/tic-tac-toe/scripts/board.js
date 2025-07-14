@@ -2,8 +2,13 @@
 const Board = (() => {
     let board = Array(9).fill(null); // Initialize a 3x3 board with null values
     let boardElement = document.querySelector('.game-board');
-   
+    let resetButton = document.querySelector('.reset-button');
+    let startButton = document.querySelector('.start-button');
+    
     const getBoard = () => board;
+    const getBoardElement = () => boardElement;
+    const getResetButton = () => resetButton;
+    const getStartButton = () => startButton;
 
     const setMarker = (index, marker) => {
         if (isValidMove(index)) {
@@ -35,13 +40,13 @@ const Board = (() => {
     // How to differentiate between console and web display?
     const displayBoard = () => {
         // For console display
-        console.log('\n--- Game Board ---');
-        console.log(`${board[0] || '0'} | ${board[1] || '1'} | ${board[2] || '2'}`);
-        console.log('---------');
-        console.log(`${board[3] || '3'} | ${board[4] || '4'} | ${board[5] || '5'}`);
-        console.log('---------');
-        console.log(`${board[6] || '6'} | ${board[7] || '7'} | ${board[8] || '8'}`);
-        console.log('------------------\n');
+        // console.log('\n--- Game Board ---');
+        // console.log(`${board[0] || '0'} | ${board[1] || '1'} | ${board[2] || '2'}`);
+        // console.log('---------');
+        // console.log(`${board[3] || '3'} | ${board[4] || '4'} | ${board[5] || '5'}`);
+        // console.log('---------');
+        // console.log(`${board[6] || '6'} | ${board[7] || '7'} | ${board[8] || '8'}`);
+        // console.log('------------------\n');
         // For web display, you would update the DOM elements instead
         boardElement = document.querySelector('.game-board');
         boardElement.innerHTML = ''; // Clear previous board display
@@ -68,6 +73,9 @@ const Board = (() => {
         isValidMove,
         resetBoard,
         displayBoard,
-        isFull
+        isFull,
+        getResetButton,
+        getStartButton,
+        getBoardElement
     };
 })();
