@@ -43,33 +43,33 @@ tic-tac-toe/
   - [x] Create game board grid
   - [x] Add player info display
   - [x] Add game controls (start, restart buttons)
-  - [ ] Add game status display
+  - [x] Add game status display
 
 - [ ] **CSS Styling** (`style.css`)
   - [x] Style game board grid
   - [x] Style player markers
   - [x] Style game controls
   - [ ] Add responsive design
-  - [ ] Add hover effects and animations
+  - [x] Add hover effects and animations
 
 - [ ] **DOM Integration** (update `game.js`)
   - [x] Handle click events on board cells
   - [x] Update visual board display
   - [ ] Show current player turn
-  - [ ] Display game results
-  - [ ] Handle game restart
+  - [x] Display game results
+  - [x] Handle game restart
 
 ### Phase 3: Enhancements (Optional)
 - [ ] **Game Features**
-  - [ ] Score tracking
+  - [x] Score tracking
   - [ ] Player name input
   - [ ] Game history
   - [ ] Sound effects
   - [ ] AI opponent (simple/advanced)
 
 - [ ] **Visual Enhancements**
-  - [ ] Smooth animations
-  - [ ] Win line highlighting
+  - [x] Smooth animations
+  - [x] Win line highlighting
   - [ ] Theme selection
   - [ ] Mobile optimization
 
