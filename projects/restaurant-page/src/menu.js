@@ -121,6 +121,9 @@ export default function loadMenu() {
     menuSection.appendChild(heading);
 
     Object.entries(menu).forEach(([category, items]) => {
+        const subSection = document.createElement('div');
+        subSection.classList.add('menu-subsection');
+
         const categoryHeading = document.createElement('h2');
         categoryHeading.textContent = category.charAt(0).toUpperCase() + category.slice(1);
         menuSection.appendChild(categoryHeading);
@@ -129,16 +132,29 @@ export default function loadMenu() {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('menu-item');
 
+            const itemTitleDiv = document.createElement('div');
+            itemTitleDiv.classList.add('menu-title');
+
             const name = document.createElement('h3');
-            name.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+            name.classList.add('menu-name');
+            name.textContent = item.name;
+
+            const price = document.createElement('h3');
+            price.classList.add('menu-price');
+            price.textContent = item.price.toFixed(2);
             
             const desc = document.createElement('p');
             desc.textContent = item.description;
 
-            itemDiv.appendChild(name);
+            itemTitleDiv.appendChild(name);
+            itemTitleDiv.appendChild(price);
+
+            itemDiv.appendChild(itemTitleDiv);
             itemDiv.appendChild(desc);
-            menuSection.appendChild(itemDiv);
+            subSection.appendChild(itemDiv);
         });
+        menuSection.appendChild(subSection);
     });
     content.appendChild(menuSection);
+    document.title = 'Savory Haven - Menu';
 }

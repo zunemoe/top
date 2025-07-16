@@ -1,0 +1,9 @@
+.home-banner {
+    width: 100%;
+}
+
+.home-banner p {
+    text-align: center;
+    font-size: var(--font-size-s);
+}
+

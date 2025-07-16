@@ -1,0 +1,24 @@
+:root {
+    --color-red: #F20C36;
+    --color-brown: #A6845B;
+    --color-light-brown: #F2E4D8;
+    --color-off-white: #F2F1F0;
+    --color-black: #262626;
+    --font-family-primary: 'Roboto Slab', serif;
+    --font-family-secondary: 'Open Sans', sans-serif;
+    --font-size-xl: 32px;
+    --font-size-l: 28px;
+    --font-size-m: 24px;
+    --font-size-s: 16px;
+    --font-size-xs: 14px;
+    --font-weight-bold: 700;
+    --font-weight-normal: 400;
+    --font-weight-light: 300;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease-in-out;
+    --spacing-l: 32px;
+    --spacing-m: 24px;
+    --spacing-s: 16px;
+    --spacing-xs: 8px;
+}

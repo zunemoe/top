@@ -1,0 +1,17 @@
+.branch {
+    padding: var(--spacing-m);
+    border: 1px solid var(--color-brown);
+    margin-bottom: var(--spacing-l);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.branch h2 {
+    font-size: var(--font-size-s);
+    color: var(--color-brown);
+    margin-bottom: var(--spacing-s);
+}
+
+.branch p {
+    margin-bottom: var(--spacing-xs);
+}

@@ -54,4 +54,5 @@ export default function loadContact() {
     })
 
     content.appendChild(contactSection);
+    document.title = 'Savory Haven - Contact';
 }
