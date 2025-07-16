@@ -2,6 +2,8 @@ body {
     background-color: var(--color-off-white);
     min-width: 100dvw;
     min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -15,6 +17,11 @@ header {
     box-shadow: var(--box-shadow);
     margin-bottom: var(--spacing-l);
     gap: var(--spacing-s);
+}
+
+footer {
+    text-align: center;
+    height: 30px;
 }
 
 nav {

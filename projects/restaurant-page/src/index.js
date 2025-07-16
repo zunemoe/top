@@ -10,6 +10,7 @@ import './styles/pages/home.css';
 import './styles/pages/menu.css';
 import './styles/pages/contact.css';
 import './styles/components/buttons.css';
+import './styles/responsive.css';
 
 // loadMenu();
 
@@ -38,4 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
             loadContact, 
             document.getElementById(`${activeTab}-tab`), allTabs);
     }
+
+    const footer = document.querySelector('footer');
+    footer.innerHTML = `
+        &copy; ${new Date().getFullYear()} Zune Moe | Made with ❤️ in Auckland
+        `;
 });

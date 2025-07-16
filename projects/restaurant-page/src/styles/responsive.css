@@ -1,7 +1,6 @@
 @media (min-width: 768px) {
-    
-}
-
-@media (min-width: 1024px) {
-
+    .tab-content {
+        width: clamp(327px, 90vw, 800px);
+        margin: 0 auto;
+    }
 }

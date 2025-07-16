@@ -22,17 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[name]__[local]--[hash:base64:5]",
-              },
-            },
-          },
-        ], // Loaders for CSS files
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.html$/i,
