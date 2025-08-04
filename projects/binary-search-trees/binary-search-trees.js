@@ -30,13 +30,16 @@ class BinarySearchTree {
         this.root.left = buildSubTree(uniqueValues.slice(0, mid));
         this.root.right = buildSubTree(uniqueValues.slice(mid + 1));
         this.size = uniqueValues.length;
-        console.log(JSON.stringify(bst.root, null, 2));
+
         return this.root;
     }
 
     insert(value) {
         const insertNode = (node, value) => {
-            if (node === null) return new Node(value);
+            if (node === null) {
+                this.size++;
+                return new Node(value);
+            }
             if (value < node.value) {
                 node.left = insertNode(node.left, value);
             } else if (value > node.value) {
@@ -45,10 +48,10 @@ class BinarySearchTree {
                 // Value already exists, do not insert duplicates
                 return node;
             }
+            return node; // Return the modified node
         }
 
         this.root = insertNode(this.root, value);
-        this.size++;
 
         if (!this.isBalanced()) this.rebalance();
 
@@ -62,29 +65,22 @@ class BinarySearchTree {
         const deleteNode = (node, value) => {
             if (node === null) return null;
 
-            if (value < node.value) {
-                node.left = deleteNode(node.left, value);
-            } else if (value > node.value) {
-                node.right = deleteNode(node.right, value);
-            } else {
-                if (node.left === null && node.right === null) {
-                    this.size--;
-                    return null; // Leaf node
-                } else if (node.left === null) {
-                    this.size--;
-                    return node.right; // Node with only right child
-                } else if (node.right === null) {
-                    this.size--;
-                    return node.left; // Node with only left child
-                } else {
+            if (value < node.value) node.left = deleteNode(node.left, value);
+            else if (value > node.value) node.right = deleteNode(node.right, value);
+            else {
+                this.size--;
+                if (node.left === null && node.right === null) return null; // Leaf node
+                else if (node.left === null) return node.right; // Node with only right child
+                else if (node.right === null) return node.left; // Node with only left child
+                else {
                     // Node with two children: find the in-order successor (smallest in the right subtree)
                     let successor = node.right;
-                    while (successor.left !== null) {
-                        successor = successor.left;                        
-                    }
+
+                    while (successor.left !== null) successor = successor.left; 
+
                     node.value = successor.value; // Replace value with successor's value
                     node.right = deleteNode(node.right, successor.value); // Delete the successor
-                    this.size--;
+
                     return node; // Return the modified node
                 }                
             }
@@ -168,9 +164,8 @@ class BinarySearchTree {
         }
 
         const node = this.find(value);
-
         if (node === null) return null; // Value not found
-        return findHeight(node, value);
+        return findHeight(node);
     }
 
     depth(value) {
@@ -200,7 +195,11 @@ class BinarySearchTree {
     }
 
     rebalance() {
-        
+        if (this.root === null) return;
+        const values = [];
+        this.inOrderForEach(value => values.push(value)); // Collect all values in sorted order
+        this.root = this.buildTree(values); // Rebuild the tree with the sorted values
+        this.size = values.length; // Update the size of the tree
     }
 }
 
@@ -222,4 +221,14 @@ let array = [10, 3, 1, 4, 1, 5, 9];
 bst.buildTree(array);
 prettyPrint(bst.root);
 bst.insert(8);
+prettyPrint(bst.root);
+bst.insert(6);
+bst.insert(7);
+bst.insert(11);
+bst.insert(12);
+prettyPrint(bst.root);
+console.log("Height of 4:", bst.height(4));
+console.log("Depth of 4:", bst.depth(4));
+console.log("Is balanced:", bst.isBalanced());
+bst.delete(3);
 prettyPrint(bst.root);
